@@ -191,22 +191,23 @@ public class RegisterScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         LoginScreen login = new LoginScreen();
         login.setVisible(true);
+        login.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        if(!et_username.getText().isEmpty() && !et_phone.getText().isEmpty() && !et_email.getText().isEmpty() && !et_pass.getText().isEmpty() && !et_cnfrmPass.getText().isEmpty()){
-            if(et_pass.getText().equalsIgnoreCase(et_cnfrmPass.getText())){
-                JOptionPane.showMessageDialog(this,"Registered Successfully!!","Successfull",JOptionPane.INFORMATION_MESSAGE);
+        if (!et_username.getText().isEmpty() && !et_phone.getText().isEmpty() && !et_email.getText().isEmpty() && !et_pass.getText().isEmpty() && !et_cnfrmPass.getText().isEmpty()) {
+            if (et_pass.getText().equalsIgnoreCase(et_cnfrmPass.getText())) {
+                JOptionPane.showMessageDialog(this, "Registered Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
                 LoginScreen login = new LoginScreen();
                 login.setVisible(true);
                 this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(this,"Password Not Same!!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Password Not Same!!");
             }
-        }else{
-            JOptionPane.showMessageDialog(this,"Fill All Details");
+        } else {
+            JOptionPane.showMessageDialog(this, "Fill All Details");
         }
     }//GEN-LAST:event_jButton1MouseClicked
 

@@ -145,6 +145,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         RegisterScreen register = new RegisterScreen();
         register.setVisible(true);
+        register.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
@@ -178,7 +179,9 @@ public class LoginScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginScreen().setVisible(true);
+                LoginScreen login = new LoginScreen();
+                login.setVisible(true);
+                login.setLocationRelativeTo(null);
             }
         });
     }

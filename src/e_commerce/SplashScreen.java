@@ -4,6 +4,8 @@
  */
 package e_commerce;
 
+import java.util.logging.Handler;
+
 /**
  *
  * @author Nihal gupta
@@ -78,13 +80,22 @@ public class SplashScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       
+        SplashScreen splash = new SplashScreen();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SplashScreen().setVisible(true);
-                                
+                splash.setLocationRelativeTo(null);
+                splash.pack();
+                splash.setVisible(true);
             }
         });
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+        }
+        LoginScreen login = new LoginScreen();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        splash.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
