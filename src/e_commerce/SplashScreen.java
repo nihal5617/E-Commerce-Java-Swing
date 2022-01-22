@@ -92,9 +92,9 @@ public class SplashScreen extends javax.swing.JFrame {
             Thread.sleep(1000);
         } catch (Exception e) {
         }
-        LoginScreen login = new LoginScreen();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
+        ChooseScreen choose = new ChooseScreen();
+        choose.setVisible(true);
+        choose.setLocationRelativeTo(null);
         splash.dispose();
     }
 

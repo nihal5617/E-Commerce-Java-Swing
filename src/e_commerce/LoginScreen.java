@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Nihal gupta
  */
 public class LoginScreen extends javax.swing.JFrame {
-
+    
     Connection con;
     PreparedStatement ps;
 
@@ -174,11 +174,12 @@ public class LoginScreen extends javax.swing.JFrame {
                 Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
             System.out.println(passgot);
-
+            
             if (pass.equals(passgot)) {
                 MainScreen main = new MainScreen();
                 main.setVisible(true);
                 main.setLocationRelativeTo(null);
+                main.getCusername(username);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Password not Match", "Error", JOptionPane.ERROR_MESSAGE);

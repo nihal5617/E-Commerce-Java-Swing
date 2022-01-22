@@ -4,11 +4,15 @@
  */
 package e_commerce;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nihal gupta
  */
 public class MainScreen extends javax.swing.JFrame {
+
+    String cusername = null;
 
     /**
      * Creates new form MainScreen
@@ -26,31 +30,92 @@ public class MainScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        btn_logout = new javax.swing.JLabel();
+        btn_feedback = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jList1.setValueIsAdjusting(true);
         jScrollPane1.setViewportView(jList1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 630));
+
+        btn_logout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_logout.setText("Log-out");
+        btn_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_logoutMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 80, -1));
+
+        btn_feedback.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_feedback.setText("Feedback");
+        btn_feedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_feedback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_feedbackMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setText("E - Commerce");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 260, 47));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1101, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void getCusername(String str) {
+        cusername = str;
+    }
+    private void btn_feedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_feedbackMouseClicked
+        // TODO add your handling code here:
+        FeedbackScreen feedback = new FeedbackScreen();
+        feedback.setVisible(true);
+        feedback.setLocationRelativeTo(null);
+        feedback.getCusernameHere(cusername);
+        this.dispose();
+    }//GEN-LAST:event_btn_feedbackMouseClicked
+
+    private void btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseClicked
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Sure? You want to LogOut?", "Alert", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            ChooseScreen choose = new ChooseScreen();
+            choose.setVisible(true);
+            choose.setLocationRelativeTo(null);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btn_logoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -88,7 +153,12 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_feedback;
+    private javax.swing.JLabel btn_logout;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
