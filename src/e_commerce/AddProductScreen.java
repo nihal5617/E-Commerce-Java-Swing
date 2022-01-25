@@ -134,7 +134,7 @@ public class AddProductScreen extends javax.swing.JFrame {
 
         btn_cancel.setBackground(new java.awt.Color(102, 102, 102));
         btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_cancel.setText("Cancel");
+        btn_cancel.setText("Log-out");
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_cancelMouseClicked(evt);

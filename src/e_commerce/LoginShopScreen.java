@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Nihal gupta
  */
 public class LoginShopScreen extends javax.swing.JFrame {
-    
+
     Connection con;
     PreparedStatement ps;
 
@@ -27,6 +27,9 @@ public class LoginShopScreen extends javax.swing.JFrame {
      */
     public LoginShopScreen() {
         initComponents();
+        btn_error.setVisible(false);
+        incorrectpasstext.setVisible(false);
+        et_username.requestFocus();
     }
 
     /**
@@ -48,6 +51,8 @@ public class LoginShopScreen extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         et_pass = new javax.swing.JPasswordField();
+        btn_error = new javax.swing.JButton();
+        incorrectpasstext = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,6 +116,29 @@ public class LoginShopScreen extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 190, 40));
         jPanel3.add(et_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 240, 40));
 
+        btn_error.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nihal gupta\\Downloads\\error.png")); // NOI18N
+        btn_error.setBorderPainted(false);
+        btn_error.setContentAreaFilled(false);
+        btn_error.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_error.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_errorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_errorMouseExited(evt);
+            }
+        });
+        btn_error.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_errorActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 30, 30));
+
+        incorrectpasstext.setForeground(new java.awt.Color(224, 18, 114));
+        incorrectpasstext.setText("Password Incorrect");
+        jPanel3.add(incorrectpasstext, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 390));
 
         pack();
@@ -141,7 +169,7 @@ public class LoginShopScreen extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             if (pass.equals(passgot)) {
                 AddProductScreen main = new AddProductScreen();
                 main.setVisible(true);
@@ -149,7 +177,7 @@ public class LoginShopScreen extends javax.swing.JFrame {
                 main.getUsername(username);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Password not Match", "Error", JOptionPane.ERROR_MESSAGE);
+                btn_error.setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Fill All Details", "Error", JOptionPane.ERROR_MESSAGE);
@@ -163,6 +191,20 @@ public class LoginShopScreen extends javax.swing.JFrame {
     private void et_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_et_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_et_usernameActionPerformed
+
+    private void btn_errorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_errorMouseEntered
+        // TODO add your handling code here:
+        incorrectpasstext.setVisible(true);
+    }//GEN-LAST:event_btn_errorMouseEntered
+
+    private void btn_errorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_errorMouseExited
+        // TODO add your handling code here:
+        incorrectpasstext.setVisible(false);
+    }//GEN-LAST:event_btn_errorMouseExited
+
+    private void btn_errorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_errorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_errorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +242,10 @@ public class LoginShopScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_error;
     private javax.swing.JPasswordField et_pass;
     private javax.swing.JTextField et_username;
+    private javax.swing.JLabel incorrectpasstext;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

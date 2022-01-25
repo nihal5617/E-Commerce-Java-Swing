@@ -4,21 +4,26 @@
  */
 package e_commerce;
 
+import com.mysql.cj.util.StringUtils;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
  * @author Nihal gupta
  */
 public class RegisterScreen extends javax.swing.JFrame {
-    
+
     Connection con;
     PreparedStatement ps;
 
@@ -60,7 +65,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        et_username1 = new javax.swing.JTextField();
+        et_username = new javax.swing.JTextField();
         et_lname = new javax.swing.JTextField();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -120,12 +125,6 @@ public class RegisterScreen extends javax.swing.JFrame {
 
         jLabel12.setText("+91");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, 38));
-
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 240, 40));
         jPanel1.add(et_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 240, 40));
 
@@ -138,10 +137,14 @@ public class RegisterScreen extends javax.swing.JFrame {
         jPanel1.add(et_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 241, -1));
 
         et_phone.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        et_phone.setToolTipText("");
         et_phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 et_phoneActionPerformed(evt);
+            }
+        });
+        et_phone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                et_phoneKeyReleased(evt);
             }
         });
         jPanel1.add(et_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 210, -1));
@@ -174,9 +177,9 @@ public class RegisterScreen extends javax.swing.JFrame {
         jLabel15.setText("Last Name");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
-        et_username1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        et_username1.setToolTipText("");
-        jPanel1.add(et_username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 241, -1));
+        et_username.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        et_username.setToolTipText("");
+        jPanel1.add(et_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 241, -1));
 
         et_lname.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         et_lname.setToolTipText("");
@@ -202,42 +205,63 @@ public class RegisterScreen extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         if (!et_name.getText().isEmpty() && !et_phone.getText().isEmpty() && !et_email.getText().isEmpty() && !et_pass.getText().isEmpty() && !jPasswordField1.getText().isEmpty()) {
-            if (et_pass.getText().equalsIgnoreCase(jPasswordField1.getText())) {
-                try {  //jdbc:mysql://localhost:3306/cakemarket?user=root&password=Jayshree123
-                    int pnumber = Integer.parseInt(et_phone.getText());
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
-                    ps = con.prepareStatement("insert into customer(pno,username,fname,lname,emailid,cpassword) values(?,?,?,?,?,?)");
-                    ps.setInt(1, pnumber);
-                    ps.setString(2, et_name.getText());
-                    ps.setString(3, et_lname.getText());
-                    ps.setString(4, et_name.getText());
-                    ps.setString(5, et_email.getText());
-                    ps.setString(6, et_pass.getText());
-                    ps.executeUpdate();
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(RegisterScreen.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(this, "Registered Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
-                LoginScreen login = new LoginScreen();
-                login.setVisible(true);
-                login.setLocationRelativeTo(null);
-                this.dispose();
+            EmailValidator emailValidator = new EmailValidator();
+            if (!emailValidator.validate(et_email.getText().trim())) {
+                JOptionPane.showMessageDialog(this, "Invalid Email!!");
             } else {
-                JOptionPane.showMessageDialog(this, "Password Not Same!!");
+                if (et_pass.getText().equalsIgnoreCase(jPasswordField1.getText())) {
+                    if (et_phone.getText().length() == 10) {
+                        try {  //jdbc:mysql://localhost:3306/cakemarket?user=root&password=Jayshree123
+                            //jdbc:mysql://sql5.freemysqlhosting.net:3306/sql5467923","sql5467923","i72hfcDGCJ
+                            long pnumber = Long.parseLong(et_phone.getText());
+                            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+                            ps = con.prepareStatement("insert into customer(pno,username,fname,lname,emailid,cpassword) values(?,?,?,?,?,?)");
+                            ps.setLong(1, pnumber);
+                            ps.setString(2, et_username.getText());
+                            ps.setString(3, et_lname.getText());
+                            ps.setString(4, et_name.getText());
+                            ps.setString(5, et_email.getText());
+                            ps.setString(6, et_pass.getText());
+                            ps.executeUpdate();
+
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(this, "Username Exists", "Error", JOptionPane.INFORMATION_MESSAGE);
+                            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                            return;
+                        }
+                        JOptionPane.showMessageDialog(this, "Registered Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
+                        LoginScreen login = new LoginScreen();
+                        login.setVisible(true);
+                        login.setLocationRelativeTo(null);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Phone Number Not Valid!!");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Password Not Same!!");
+                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "Fill All Details");
         }
+
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void et_phoneKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_et_phoneKeyReleased
+        // TODO add your handling code here:
+        long x;
+        String textnow = et_phone.getText();
+        try {
+            textnow = textnow.substring(0, textnow.length() - 1);
+            x = Long.parseLong(et_phone.getText());
+        } catch (NumberFormatException nfe) {
+            et_phone.setText(textnow);
+        }
+    }//GEN-LAST:event_et_phoneKeyReleased
 
     private void et_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_et_phoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_et_phoneActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +304,7 @@ public class RegisterScreen extends javax.swing.JFrame {
     private javax.swing.JTextField et_name;
     private javax.swing.JPasswordField et_pass;
     private javax.swing.JTextField et_phone;
-    private javax.swing.JTextField et_username1;
+    private javax.swing.JTextField et_username;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

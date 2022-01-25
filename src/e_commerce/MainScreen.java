@@ -4,6 +4,21 @@
  */
 package e_commerce;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +27,64 @@ import javax.swing.JOptionPane;
  */
 public class MainScreen extends javax.swing.JFrame {
 
+    int gotpid;
     String cusername = null;
+    DefaultTableModel model = null;
 
     /**
      * Creates new form MainScreen
      */
     public MainScreen() {
+        Connection con;
+        PreparedStatement ps;
+        ImageIcon image = null;
+
+        model = new DefaultTableModel() {
+
+//            private static final long serialVersionUID = 1L;
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            @Override
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;//This causes all cells to be not editable
+            }
+        };
+        model.addColumn("Category");
+        model.addColumn("Item");
+        model.addColumn("Price");
+        model.addColumn("Qty");
+        model.addColumn("id");
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+            CallableStatement sp = con.prepareCall("select i.smallimage,p.pname,p.price,p.quantity,p.pid from image i,product p where i.category = p.category;");
+            ResultSet rs = sp.executeQuery();
+            while (rs.next()) {
+                byte[] imagedata = rs.getBytes("smallimage");
+                image = new ImageIcon(imagedata);
+                model.addRow(new Object[]{image, rs.getString("pname"), rs.getInt("price"), rs.getInt("quantity"), rs.getInt("pid")});
+
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         initComponents();
+        jTable1.setRowHeight(133);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        JTableHeader header = jTable1.getTableHeader();
+        header.setDefaultRenderer(centerRenderer);
+        jTable1.setDefaultRenderer(String.class, centerRenderer);
+        jTable1.setDefaultRenderer(Integer.class, centerRenderer);
+        jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(4).setWidth(0);
+//        populateTable();
     }
 
     /**
@@ -32,11 +98,13 @@ public class MainScreen extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         btn_logout = new javax.swing.JLabel();
         btn_feedback = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        et_search = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -44,17 +112,6 @@ public class MainScreen extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jList1.setValueIsAdjusting(true);
-        jScrollPane1.setViewportView(jList1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 830, 630));
 
         btn_logout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_logout.setText("Log-out");
@@ -64,7 +121,7 @@ public class MainScreen extends javax.swing.JFrame {
                 btn_logoutMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 80, -1));
+        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, 80, -1));
 
         btn_feedback.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_feedback.setText("Feedback");
@@ -74,11 +131,33 @@ public class MainScreen extends javax.swing.JFrame {
                 btn_feedbackMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, -1, -1));
+        jPanel1.add(btn_feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setText("E - Commerce");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 260, 47));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 47));
+
+        jTable1.setModel(model);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 830, 590));
+
+        et_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                et_searchKeyReleased(evt);
+            }
+        });
+        jPanel1.add(et_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 72, 270, 30));
+
+        jLabel1.setText("Search    :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 70, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +196,72 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_logoutMouseClicked
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int row = jTable1.getSelectedRow();
+        int column = 4;
+//        System.out.println(jTable1.getValueAt(row, column));
+        gotpid = (int) jTable1.getValueAt(row, column);
+        System.out.println(gotpid);
+        BuyScreen buyscreen = new BuyScreen(gotpid);
+        buyscreen.setVisible(true);
+        buyscreen.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void et_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_et_searchKeyReleased
+        // TODO add your handling code here:
+        String textnow = et_search.getText();
+        Connection con;
+        PreparedStatement ps;
+        ImageIcon image = null;
+
+        model = new DefaultTableModel() {
+
+//            private static final long serialVersionUID = 1L;
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            @Override
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;//This causes all cells to be not editable
+            }
+        };
+        model.addColumn("Category");
+        model.addColumn("Item");
+        model.addColumn("Price");
+        model.addColumn("Qty");
+        model.addColumn("id");
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+            PreparedStatement sp = con.prepareStatement("select i.smallimage,p.pname,p.price,p.quantity,p.pid from image i,product p where i.category = p.category and p.pname = '%';");
+            ResultSet rs = sp.executeQuery();
+            while (rs.next()) {
+                byte[] imagedata = rs.getBytes("smallimage");
+                image = new ImageIcon(imagedata);
+                model.addRow(new Object[]{image, rs.getString("pname"), rs.getInt("price"), rs.getInt("quantity"), rs.getInt("pid")});
+
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        jTable1.setRowHeight(133);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        JTableHeader header = jTable1.getTableHeader();
+        header.setDefaultRenderer(centerRenderer);
+        jTable1.setDefaultRenderer(String.class, centerRenderer);
+        jTable1.setDefaultRenderer(Integer.class, centerRenderer);
+        jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(4).setWidth(0);
+        jTable1.setModel(model);
+    }//GEN-LAST:event_et_searchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -134,13 +279,17 @@ public class MainScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreen.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -155,10 +304,12 @@ public class MainScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_feedback;
     private javax.swing.JLabel btn_logout;
+    private javax.swing.JTextField et_search;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

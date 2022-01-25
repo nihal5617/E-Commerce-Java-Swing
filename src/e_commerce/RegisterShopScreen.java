@@ -193,7 +193,8 @@ public class RegisterShopScreen extends javax.swing.JFrame {
                     ps.executeUpdate();
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(RegisterScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, "Username Exists", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    return;
                 }
                 JOptionPane.showMessageDialog(this, "Registered Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
                 LoginShopScreen login = new LoginShopScreen();

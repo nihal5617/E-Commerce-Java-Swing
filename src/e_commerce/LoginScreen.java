@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Nihal gupta
  */
 public class LoginScreen extends javax.swing.JFrame {
-    
+
     Connection con;
     PreparedStatement ps;
 
@@ -27,6 +27,9 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
+        btn_error.setVisible(false);
+        incorrectpasstext.setVisible(false);
+        et_username.requestFocus();
     }
 
     /**
@@ -47,11 +50,13 @@ public class LoginScreen extends javax.swing.JFrame {
         et_username = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        incorrectpasstext = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         et_pass = new javax.swing.JPasswordField();
+        btn_error = new javax.swing.JButton();
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Password");
@@ -100,12 +105,16 @@ public class LoginScreen extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setText("Don't have an Account?");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
+
+        incorrectpasstext.setForeground(new java.awt.Color(224, 18, 114));
+        incorrectpasstext.setText("Password Incorrect");
+        jPanel3.add(incorrectpasstext, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_login.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 250, -1));
-
-        jLabel4.setText("Don't have an Account?");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setForeground(new java.awt.Color(0, 51, 153));
@@ -135,6 +144,25 @@ public class LoginScreen extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 190, 40));
         jPanel3.add(et_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 240, 40));
 
+        btn_error.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nihal gupta\\Downloads\\error.png")); // NOI18N
+        btn_error.setBorderPainted(false);
+        btn_error.setContentAreaFilled(false);
+        btn_error.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_error.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_errorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_errorMouseExited(evt);
+            }
+        });
+        btn_error.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_errorActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 30, 30));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 390));
 
         pack();
@@ -157,6 +185,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        btn_error.setVisible(false);
         String username = et_username.getText();
         String pass = et_pass.getText();
         String passgot = null;
@@ -173,8 +202,7 @@ public class LoginScreen extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(passgot);
-            
+
             if (pass.equals(passgot)) {
                 MainScreen main = new MainScreen();
                 main.setVisible(true);
@@ -182,12 +210,26 @@ public class LoginScreen extends javax.swing.JFrame {
                 main.getCusername(username);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Password not Match", "Error", JOptionPane.ERROR_MESSAGE);
+                btn_error.setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Fill All Details", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btn_errorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_errorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_errorActionPerformed
+
+    private void btn_errorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_errorMouseEntered
+        // TODO add your handling code here:
+        incorrectpasstext.setVisible(true);
+    }//GEN-LAST:event_btn_errorMouseEntered
+
+    private void btn_errorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_errorMouseExited
+        // TODO add your handling code here:
+        incorrectpasstext.setVisible(false);
+    }//GEN-LAST:event_btn_errorMouseExited
 
     /**
      * @param args the command line arguments
@@ -227,8 +269,10 @@ public class LoginScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_error;
     private javax.swing.JPasswordField et_pass;
     private javax.swing.JTextField et_username;
+    private javax.swing.JLabel incorrectpasstext;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
