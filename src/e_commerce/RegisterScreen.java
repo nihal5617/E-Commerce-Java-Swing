@@ -31,7 +31,9 @@ public class RegisterScreen extends javax.swing.JFrame {
      * Creates new form RegisterScreen
      */
     public RegisterScreen() {
+        super("Register Screen");
         initComponents();
+        et_name.setFocusable(true);
     }
 
     /**

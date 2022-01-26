@@ -26,6 +26,7 @@ public class LoginShopScreen extends javax.swing.JFrame {
      * Creates new form LoginShopScreen
      */
     public LoginShopScreen() {
+        super("Login Shop Screen");
         initComponents();
         btn_error.setVisible(false);
         incorrectpasstext.setVisible(false);

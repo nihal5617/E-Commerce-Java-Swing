@@ -35,6 +35,7 @@ public class MainScreen extends javax.swing.JFrame {
      * Creates new form MainScreen
      */
     public MainScreen() {
+        super("Main Screen");
         Connection con;
         PreparedStatement ps;
         ImageIcon image = null;
@@ -103,8 +104,11 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        et_search = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        cb_filter = new javax.swing.JComboBox<>();
+        btn_apply = new javax.swing.JButton();
+        et_search = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -149,15 +153,43 @@ public class MainScreen extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 830, 590));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Seacrh");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 50, 30));
+
+        cb_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grocery", "Cosmetics", "Clothing", "Sports" , "Electronics","All" }));
+        jPanel1.add(cb_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 180, 30));
+
+        btn_apply.setText("Apply");
+        btn_apply.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_applyMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_apply, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, 30));
+
         et_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 et_searchKeyReleased(evt);
             }
         });
-        jPanel1.add(et_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 72, 270, 30));
+        jPanel1.add(et_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 170, 30));
 
-        jLabel1.setText("Search    :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 70, 20));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Filter");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 50, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,13 +236,18 @@ public class MainScreen extends javax.swing.JFrame {
         System.out.println(gotpid);
         BuyScreen buyscreen = new BuyScreen(gotpid);
         buyscreen.setVisible(true);
+        buyscreen.getUserName(cusername);
         buyscreen.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void et_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_et_searchKeyReleased
-        // TODO add your handling code here:
-        String textnow = et_search.getText();
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btn_applyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_applyMouseClicked
+
+        int selecteditem = cb_filter.getSelectedIndex();
         Connection con;
         PreparedStatement ps;
         ImageIcon image = null;
@@ -237,7 +274,75 @@ public class MainScreen extends javax.swing.JFrame {
         model.addColumn("id");
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
-            PreparedStatement sp = con.prepareStatement("select i.smallimage,p.pname,p.price,p.quantity,p.pid from image i,product p where i.category = p.category and p.pname = '%';");
+            PreparedStatement sp = con.prepareStatement("select i.smallimage,p.pname,p.price,p.quantity,p.pid from image i,product p where i.category = p.category and p.category like ?;");
+            if (selecteditem == 0) {
+                sp.setString(1, "grocery");
+            } else if (selecteditem == 1) {
+                sp.setString(1, "cosmetics");
+            } else if (selecteditem == 2) {
+                sp.setString(1, "clothing");
+            } else if (selecteditem == 3) {
+                sp.setString(1, "sports");
+            } else if (selecteditem == 4) {
+                sp.setString(1, "electronics");
+            } else if (selecteditem == 5) {
+                sp.setString(1, "%");
+            }
+            ResultSet rs = sp.executeQuery();
+            while (rs.next()) {
+                byte[] imagedata = rs.getBytes("smallimage");
+                image = new ImageIcon(imagedata);
+                model.addRow(new Object[]{image, rs.getString("pname"), rs.getInt("price"), rs.getInt("quantity"), rs.getInt("pid")});
+
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        jTable1.setRowHeight(133);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        JTableHeader header = jTable1.getTableHeader();
+        header.setDefaultRenderer(centerRenderer);
+        jTable1.setDefaultRenderer(String.class, centerRenderer);
+        jTable1.setDefaultRenderer(Integer.class, centerRenderer);
+        jTable1.getColumnModel().getColumn(4).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(4).setWidth(0);
+        jTable1.setModel(model);
+    }//GEN-LAST:event_btn_applyMouseClicked
+
+    private void et_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_et_searchKeyReleased
+        // TODO add your handling code here:
+        String textnow = et_search.getText();
+        Connection con;
+        PreparedStatement ps;
+        ImageIcon image = null;
+
+        model = new DefaultTableModel() {
+
+// private static final long serialVersionUID = 1L;
+// Returning the Class of each column will allow different
+// renderers to be used based on Class
+            @Override
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;//This causes all cells to be not editable
+            }
+        };
+        model.addColumn("Category");
+        model.addColumn("Item");
+        model.addColumn("Price");
+        model.addColumn("Qty");
+        model.addColumn("id");
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+            PreparedStatement sp = con.prepareStatement("select i.smallimage,p.pname,p.price,p.quantity,p.pid from image i,product p where i.category = p.category and p.pname like ?;");
+            sp.setString(1, textnow+"%");
             ResultSet rs = sp.executeQuery();
             while (rs.next()) {
                 byte[] imagedata = rs.getBytes("smallimage");
@@ -261,6 +366,10 @@ public class MainScreen extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(4).setWidth(0);
         jTable1.setModel(model);
     }//GEN-LAST:event_et_searchKeyReleased
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -302,12 +411,15 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_apply;
     private javax.swing.JLabel btn_feedback;
     private javax.swing.JLabel btn_logout;
+    private javax.swing.JComboBox<String> cb_filter;
     private javax.swing.JTextField et_search;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

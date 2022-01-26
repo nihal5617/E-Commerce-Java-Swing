@@ -27,6 +27,7 @@ public class FeedbackScreen extends javax.swing.JFrame {
      * Creates new form FeedbackScreen
      */
     public FeedbackScreen() {
+        super("Feedback Screen");
         initComponents();
     }
 
@@ -104,7 +105,7 @@ public class FeedbackScreen extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 340, 140));
 
-        btn_back.setText("Back");
+        btn_back.setText("⬅");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_backActionPerformed(evt);

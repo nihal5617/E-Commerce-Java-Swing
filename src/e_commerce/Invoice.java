@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,12 +29,21 @@ public class Invoice extends javax.swing.JFrame {
      */
     Connection con;
     PreparedStatement ps;
+    int quantityofproduct;
+    int productid;
+    int originalquantity;
+    String gotusername;
 
-    public Invoice(String qty, int pid) {
+    public Invoice(String qty, int pid, String ogquantity) {
+        super("Invoice Screen");
         initComponents();
+        quantityofproduct = Integer.parseInt(qty);
+        originalquantity = Integer.parseInt(ogquantity);
+
+        productid = pid;
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
-            ps = con.prepareStatement("select p.pname,p.price,s.sname from shop s,product p where s.sname = p.shopinfo and p.pid = ?");
+            ps = con.prepareStatement("select p.pname,p.price,s.sname from shop s,product p where s.username = p.shopinfo and p.pid = ?");
             ps.setInt(1, pid);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -66,12 +76,13 @@ public class Invoice extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_placeorder = new javax.swing.JButton();
         pname = new javax.swing.JLabel();
         mname = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         quantity = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,50 +91,74 @@ public class Invoice extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("PRODUCT NAME");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 220, 20));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("PRICE");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 130, 40));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("TOTAL");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 130, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("MANUFACTURER");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 100, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 220, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("QUANTITY");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 160, -1));
 
-        jButton1.setText("PLACE ORDER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_placeorder.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_placeorder.setText("PLACE ORDER");
+        btn_placeorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_placeorderActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        jPanel1.add(btn_placeorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
 
+        pname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         pname.setText("......");
-        jPanel1.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 60, 20));
+        jPanel1.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 170, 20));
 
+        mname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mname.setText("jLabel7");
-        jPanel1.add(mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 100, 20));
+        jPanel1.add(mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 100, 20));
 
+        price.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         price.setText("jLabel8");
-        jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, -1));
+        jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 120, -1));
 
+        quantity.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         quantity.setText("jLabel9");
-        jPanel1.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 60, -1));
+        jPanel1.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 120, -1));
 
+        total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         total.setText("jLabel10");
-        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 60, -1));
+        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 120, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 454));
+        BackButton.setText("⬅");
+        BackButton.setAlignmentX(-0.5F);
+        BackButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BackButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    public void getUserName(String username) {
+        gotusername = username;
+    }
+    private void btn_placeorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_placeorderActionPerformed
         // TODO add your handling code here:
         try {
             // Construct data
@@ -148,10 +183,44 @@ public class Invoice extends javax.swing.JFrame {
             rd.close();
 
             System.out.println(stringBuffer.toString());
+
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+            ps = con.prepareStatement("insert into invoice(pname,mname,price,quantity,total,cname) values(?,?,?,?,?,?)");
+            System.out.println(pname.getText().toString() + " " + mname.getText().toString());
+            ps.setString(1, pname.getText().toString());
+            ps.setString(2, mname.getText().toString());
+            ps.setString(3, price.getText().toString());
+            ps.setInt(4, Integer.parseInt(quantity.getText().toString()));
+            ps.setString(5, total.getText().toString());
+            ps.setString(6, gotusername);
+            ps.executeUpdate();
+            con.close();
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+            ps = con.prepareStatement("update product set quantity = ? where pid = ?");
+            ps.setInt(1, originalquantity - quantityofproduct);
+            ps.setInt(2, productid);
+            ps.executeUpdate();
+            con.close();
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+            ps = con.prepareStatement("delete from product where quantity = 0");
+            ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error SMS " + e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(this, "Your Order is Placed!!", "Thank You!!", JOptionPane.INFORMATION_MESSAGE);
+        MainScreen main = new MainScreen();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btn_placeorderActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        BuyScreen main = new BuyScreen(productid);
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,13 +252,14 @@ public class Invoice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Invoice("", 1).setVisible(true);
+                new Invoice("", 1, "").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton btn_placeorder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

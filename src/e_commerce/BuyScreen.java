@@ -32,8 +32,10 @@ public class BuyScreen extends javax.swing.JFrame {
     int stars;
     int q;
     int Productid;
+    String gotusername;
 
     public BuyScreen(int pid) {
+        super("Buy Screen Screen");
         initComponents();
         Productid = pid;
         jSpinner1.setEditor(new JSpinner.DefaultEditor(jSpinner1));
@@ -51,7 +53,8 @@ public class BuyScreen extends javax.swing.JFrame {
                 product_name.setText(rs.getString("pname"));
                 q = rs.getInt("quantity");
                 Quantity.setText(String.valueOf(q));
-                jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, q, 1));
+                jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2, 1, q, 1));
+                jSpinner1.setValue(1);
                 productinfo.setText(rs.getString("info"));
                 stars = rs.getInt("rating");
                 String star = "";
@@ -103,7 +106,7 @@ public class BuyScreen extends javax.swing.JFrame {
         Image_file.setText("IMAGE");
         jPanel1.add(Image_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 500, 330));
 
-        BackButton.setText("⬅️ ");
+        BackButton.setText("⬅");
         BackButton.setAlignmentX(-0.5F);
         BackButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BackButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -178,14 +181,17 @@ public class BuyScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void getUserName(String username) {
+        gotusername = username;
+    }
     private void BuybuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuybuttonActionPerformed
         // TODO add your handling code here
         if (Integer.parseInt(jSpinner1.getValue().toString()) == 0) {
             JOptionPane.showMessageDialog(this, "Quantity Cannot be 0", "Alert", JOptionPane.ERROR_MESSAGE);
         } else {
-            Invoice invoice = new Invoice(jSpinner1.getValue().toString(), Productid);
+            Invoice invoice = new Invoice(jSpinner1.getValue().toString(), Productid, Quantity.getText().toString());
             invoice.setVisible(true);
+            invoice.getUserName(gotusername);
             invoice.setLocationRelativeTo(null);
             this.dispose();
         }

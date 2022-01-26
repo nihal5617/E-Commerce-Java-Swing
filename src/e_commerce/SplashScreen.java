@@ -5,6 +5,7 @@
 package e_commerce;
 
 import java.util.logging.Handler;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,7 +17,9 @@ public class SplashScreen extends javax.swing.JFrame {
      * Creates new form SplashScreen
      */
     public SplashScreen() {
+        super("Splash Screen");
         initComponents();
+
     }
 
     /**

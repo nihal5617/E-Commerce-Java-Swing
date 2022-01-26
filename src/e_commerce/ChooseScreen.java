@@ -4,6 +4,11 @@
  */
 package e_commerce;
 
+import com.sun.media.sound.EmergencySoundbank;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Nihal gupta
@@ -14,6 +19,10 @@ public class ChooseScreen extends javax.swing.JFrame {
      * Creates new form ChooseScreen
      */
     public ChooseScreen() {
+        super("Choose Screen");
+//        super.setIconImage((new javax.swing.ImageIcon(getClass().getResource("/img/register.jpg"))));
+//        ImageIcon icon = ImageIcon(getClass().getResource("/img/register.jpg"));
+//        super.setIconImage(icon);
         initComponents();
     }
 

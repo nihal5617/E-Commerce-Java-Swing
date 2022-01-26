@@ -26,7 +26,9 @@ public class RegisterShopScreen extends javax.swing.JFrame {
      * Creates new form RegisterShopScreen
      */
     public RegisterShopScreen() {
+        super("Register Shop Screen");
         initComponents();
+        et_gstno.setFocusable(true);
     }
 
     /**
@@ -181,28 +183,33 @@ public class RegisterShopScreen extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         if (!et_gstno.getText().isEmpty() && !et_username1.getText().isEmpty() && !et_email.getText().isEmpty() && !et_pass.getText().isEmpty() && !jPasswordField1.getText().isEmpty()) {
-            if (et_pass.getText().equalsIgnoreCase(jPasswordField1.getText())) {
-                try {  //jdbc:mysql://localhost:3306/cakemarket?user=root&password=Jayshree123
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
-                    ps = con.prepareStatement("insert into shop values(?,?,?,?,?)");
-                    ps.setString(1, et_gstno.getText());
-                    ps.setString(2, et_username1.getText());
-                    ps.setString(3, et_sname.getText());
-                    ps.setString(4, et_email.getText());
-                    ps.setString(5, et_pass.getText());
-                    ps.executeUpdate();
-
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(this, "Username Exists", "Error", JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-                JOptionPane.showMessageDialog(this, "Registered Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
-                LoginShopScreen login = new LoginShopScreen();
-                login.setVisible(true);
-                login.setLocationRelativeTo(null);
-                this.dispose();
+            EmailValidator emailValidator = new EmailValidator();
+            if (!emailValidator.validate(et_email.getText().trim())) {
+                JOptionPane.showMessageDialog(this, "Invalid Email!!");
             } else {
-                JOptionPane.showMessageDialog(this, "Password Not Same!!");
+                if (et_pass.getText().equalsIgnoreCase(jPasswordField1.getText())) {
+                    try {  //jdbc:mysql://localhost:3306/cakemarket?user=root&password=Jayshree123
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
+                        ps = con.prepareStatement("insert into shop values(?,?,?,?,?)");
+                        ps.setString(1, et_gstno.getText());
+                        ps.setString(2, et_username1.getText());
+                        ps.setString(3, et_sname.getText());
+                        ps.setString(4, et_email.getText());
+                        ps.setString(5, et_pass.getText());
+                        ps.executeUpdate();
+
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(this, "Username Exists", "Error", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(this, "Registered Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
+                    LoginShopScreen login = new LoginShopScreen();
+                    login.setVisible(true);
+                    login.setLocationRelativeTo(null);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Password Not Same!!");
+                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "Fill All Details");

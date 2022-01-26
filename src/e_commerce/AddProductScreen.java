@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 
 /**
  *
@@ -27,7 +28,12 @@ public class AddProductScreen extends javax.swing.JFrame {
      * Creates new form AddProductScreen
      */
     public AddProductScreen() {
+        super("Add Product Screen");
         initComponents();
+
+        spinner.setModel(new javax.swing.SpinnerNumberModel(2, 1, 100, 1));
+        spinner.setValue(1);
+        et_pname.setFocusable(true);
     }
 
     /**
@@ -47,7 +53,6 @@ public class AddProductScreen extends javax.swing.JFrame {
         info = new java.awt.TextArea();
         jPanel1 = new javax.swing.JPanel();
         btn_upload = new javax.swing.JButton();
-        cb_quantity = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -55,6 +60,7 @@ public class AddProductScreen extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         et_price = new javax.swing.JTextField();
         btn_cancel = new javax.swing.JButton();
+        spinner = new javax.swing.JSpinner();
         jLabel21 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -95,14 +101,6 @@ public class AddProductScreen extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 136, 38));
-
-        cb_quantity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" ,"5" }));
-        cb_quantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_quantityActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cb_quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 351, 37));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel18.setText("Category");
@@ -147,6 +145,9 @@ public class AddProductScreen extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 130, 40));
 
+        spinner.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 80, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 570));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -162,7 +163,7 @@ public class AddProductScreen extends javax.swing.JFrame {
     private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
         // TODO add your handling code here:
         System.out.println(cb_category.getSelectedItem().toString());
-        System.out.println(cb_quantity.getSelectedItem().toString());
+        System.out.println(spinner.getValue().toString());
         if (!et_pname.getText().isEmpty() && !et_price.getText().isEmpty() && !info.getText().isEmpty()) {
             try {  //jdbc:mysql://localhost:3306/cakemarket?user=root&password=Jayshree123
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?user=root&password=nihal123");
@@ -171,7 +172,7 @@ public class AddProductScreen extends javax.swing.JFrame {
                 ps.setInt(2, Integer.parseInt(et_price.getText()));
                 ps.setString(3, info.getText());
                 ps.setString(4, cb_category.getSelectedItem().toString());
-                ps.setInt(5, Integer.parseInt(cb_quantity.getSelectedItem().toString()));
+                ps.setInt(5, Integer.parseInt(spinner.getValue().toString()));
                 ps.setString(6, gotusername);
                 ps.executeUpdate();
 
@@ -179,18 +180,19 @@ public class AddProductScreen extends javax.swing.JFrame {
                 Logger.getLogger(RegisterScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
             JOptionPane.showMessageDialog(this, "Uploaded Successfully!!", "Successfull", JOptionPane.INFORMATION_MESSAGE);
-            ChooseScreen choose = new ChooseScreen();
-            choose.setVisible(true);
-            choose.setLocationRelativeTo(null);
-            this.dispose();
+//            ChooseScreen choose = new ChooseScreen();
+//            choose.setVisible(true);
+//            choose.setLocationRelativeTo(null);
+//            this.dispose();
+            et_pname.setText("");
+            et_price.setText("");
+            info.setText("");
+            spinner.setValue(0);
+            cb_category.setSelectedIndex(1);
         }
 
 
     }//GEN-LAST:event_btn_uploadActionPerformed
-
-    private void cb_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_quantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_quantityActionPerformed
 
     private void cb_categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_categoryActionPerformed
         // TODO add your handling code here:
@@ -253,7 +255,6 @@ public class AddProductScreen extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_upload;
     private javax.swing.JComboBox<String> cb_category;
-    private javax.swing.JComboBox<String> cb_quantity;
     private javax.swing.JTextField et_pname;
     private javax.swing.JTextField et_price;
     private java.awt.TextArea info;
@@ -267,5 +268,6 @@ public class AddProductScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner spinner;
     // End of variables declaration//GEN-END:variables
 }
