@@ -42,8 +42,6 @@ public class RegisterShopScreen extends javax.swing.JFrame {
 
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         et_gstno = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -59,57 +57,37 @@ public class RegisterShopScreen extends javax.swing.JFrame {
         et_pass = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/register.jpg"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/register-removebg-preview.png"))); // NOI18N
         jLabel13.setText("jLabel13");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 121, 250, -1));
 
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(11, 44, 83));
         jLabel10.setText("Have an Account?");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, -1));
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel11.setText("click here");
-        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Register");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 190, 40));
 
         et_gstno.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         et_gstno.setToolTipText("");
         getContentPane().add(et_gstno, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 241, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(11, 44, 83));
         jLabel3.setText("GST NO.");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(11, 44, 83));
         jLabel14.setText("Username");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(11, 44, 83));
         jLabel15.setText("Shop Name");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
@@ -121,27 +99,30 @@ public class RegisterShopScreen extends javax.swing.JFrame {
         et_sname.setToolTipText("");
         getContentPane().add(et_sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 241, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(11, 44, 83));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Garamond", 0, 48)); // NOI18N
         jLabel1.setText("Register Shop");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 13, 240, 47));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 270, 60));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setText("email id");
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(11, 44, 83));
+        jLabel5.setText("Email ID");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
 
         et_email.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         et_email.setToolTipText("");
         jPanel2.add(et_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 241, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(11, 44, 83));
         jLabel6.setText("Password");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
         jPanel2.add(et_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 240, 40));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(11, 44, 83));
         jLabel7.setText("Confirm Password");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
 
@@ -151,6 +132,34 @@ public class RegisterShopScreen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 240, 40));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(3, 11, 21));
+        jLabel11.setText("click here");
+        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(28, 109, 208));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 248, 243));
+        jButton1.setText("Register");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 190, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

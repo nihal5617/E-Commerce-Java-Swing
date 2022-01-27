@@ -46,7 +46,6 @@ public class AddProductScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         et_pname = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -61,6 +60,7 @@ public class AddProductScreen extends javax.swing.JFrame {
         et_price = new javax.swing.JTextField();
         btn_cancel = new javax.swing.JButton();
         spinner = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -70,11 +70,8 @@ public class AddProductScreen extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel2.setText("Add Product");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 13, 240, 47));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(11, 44, 83));
         jLabel15.setText("Product Name");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
@@ -82,16 +79,18 @@ public class AddProductScreen extends javax.swing.JFrame {
         et_pname.setToolTipText("");
         getContentPane().add(et_pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 241, -1));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(11, 44, 83));
         jLabel16.setText("Price");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
         getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 203, 351, 120));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(11, 44, 83));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_upload.setBackground(new java.awt.Color(102, 102, 102));
-        btn_upload.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_upload.setBackground(new java.awt.Color(28, 109, 208));
+        btn_upload.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_upload.setForeground(new java.awt.Color(255, 248, 243));
         btn_upload.setText("Upload");
         btn_upload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_upload.setVerifyInputWhenFocusTarget(false);
@@ -102,18 +101,22 @@ public class AddProductScreen extends javax.swing.JFrame {
         });
         jPanel1.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 136, 38));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(11, 44, 83));
         jLabel18.setText("Category");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(11, 44, 83));
         jLabel22.setText("Rs.");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(11, 44, 83));
         jLabel17.setText("Quantity");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
+        cb_category.setForeground(new java.awt.Color(11, 44, 83));
         cb_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "grocery", "cosmetics", "sports", "clothing" ,"electronics" }));
         cb_category.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,16 +125,18 @@ public class AddProductScreen extends javax.swing.JFrame {
         });
         jPanel1.add(cb_category, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 351, 37));
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(11, 44, 83));
         jLabel23.setText("Info");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
 
         et_price.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         et_price.setToolTipText("");
-        jPanel1.add(et_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 210, -1));
+        jPanel1.add(et_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 210, -1));
 
-        btn_cancel.setBackground(new java.awt.Color(102, 102, 102));
-        btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_cancel.setBackground(new java.awt.Color(28, 109, 208));
+        btn_cancel.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_cancel.setForeground(new java.awt.Color(255, 248, 243));
         btn_cancel.setText("Log-out");
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,6 +152,11 @@ public class AddProductScreen extends javax.swing.JFrame {
 
         spinner.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(spinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 80, 40));
+
+        jLabel2.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(11, 44, 83));
+        jLabel2.setText("ADD PRODUCT");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 260, 47));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 570));
 

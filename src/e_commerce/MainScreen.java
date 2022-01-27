@@ -114,10 +114,10 @@ public class MainScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_logout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_logout.setFont(new java.awt.Font("Garamond", 1, 24)); // NOI18N
+        btn_logout.setForeground(new java.awt.Color(11, 44, 83));
         btn_logout.setText("Log-out");
         btn_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,9 +125,10 @@ public class MainScreen extends javax.swing.JFrame {
                 btn_logoutMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, 80, -1));
+        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 90, -1));
 
-        btn_feedback.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_feedback.setFont(new java.awt.Font("Garamond", 1, 24)); // NOI18N
+        btn_feedback.setForeground(new java.awt.Color(11, 44, 83));
         btn_feedback.setText("Feedback");
         btn_feedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_feedback.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,12 +136,16 @@ public class MainScreen extends javax.swing.JFrame {
                 btn_feedbackMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, -1, -1));
+        jPanel1.add(btn_feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Garamond", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(11, 44, 83));
         jLabel2.setText("E - Commerce");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 47));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, 47));
 
+        jTable1.setBackground(new java.awt.Color(240, 240, 240));
+        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(11, 44, 83));
         jTable1.setModel(model);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -153,7 +158,8 @@ public class MainScreen extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 830, 590));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(11, 44, 83));
         jLabel1.setText("Seacrh");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,11 +167,14 @@ public class MainScreen extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 50, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 60, 30));
 
         cb_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grocery", "Cosmetics", "Clothing", "Sports" , "Electronics","All" }));
         jPanel1.add(cb_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 180, 30));
 
+        btn_apply.setBackground(new java.awt.Color(51, 124, 213));
+        btn_apply.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btn_apply.setForeground(new java.awt.Color(11, 44, 83));
         btn_apply.setText("Apply");
         btn_apply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,7 +190,8 @@ public class MainScreen extends javax.swing.JFrame {
         });
         jPanel1.add(et_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 170, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(11, 44, 83));
         jLabel3.setText("Filter");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,7 +199,7 @@ public class MainScreen extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 50, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 50, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

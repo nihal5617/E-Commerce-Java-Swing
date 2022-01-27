@@ -4,7 +4,6 @@
  */
 package e_commerce;
 
-import com.mysql.cj.util.StringUtils;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -84,22 +83,24 @@ public class RegisterScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(11, 44, 83));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/register.jpg"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/register-removebg-preview.png"))); // NOI18N
         jLabel13.setText("jLabel13");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 121, 250, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Register Yourself");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 13, 300, 47));
+        jLabel1.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(11, 44, 83));
+        jLabel1.setText("REGISTER YOURSELF");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 370, 47));
 
+        jLabel10.setForeground(new java.awt.Color(11, 44, 83));
         jLabel10.setText("Have an Account?");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel11.setForeground(new java.awt.Color(3, 11, 21));
         jLabel11.setText("click here");
         jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -110,8 +111,9 @@ public class RegisterScreen extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setBackground(new java.awt.Color(28, 109, 208));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 248, 243));
         jButton1.setText("Register");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,6 +127,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 190, 40));
 
+        jLabel12.setForeground(new java.awt.Color(11, 44, 83));
         jLabel12.setText("+91");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, 38));
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 240, 40));
@@ -151,31 +154,38 @@ public class RegisterScreen extends javax.swing.JFrame {
         });
         jPanel1.add(et_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 210, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(11, 44, 83));
         jLabel7.setText("Confirm Password");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(11, 44, 83));
         jLabel6.setText("Password");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setText("email id");
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(11, 44, 83));
+        jLabel5.setText("Email ID");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(11, 44, 83));
         jLabel4.setText("Phone number");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(11, 44, 83));
         jLabel3.setText("First Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(11, 44, 83));
         jLabel14.setText("Username");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(11, 44, 83));
         jLabel15.setText("Last Name");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
@@ -187,7 +197,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         et_lname.setToolTipText("");
         jPanel1.add(et_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 241, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 630));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 860, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

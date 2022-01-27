@@ -46,9 +46,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        et_username = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -58,6 +56,8 @@ public class LoginScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         et_pass = new javax.swing.JPasswordField();
         btn_error = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        et_username = new javax.swing.JTextField();
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Password");
@@ -87,43 +87,33 @@ public class LoginScreen extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(203, 210, 217));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(203, 210, 233));
-        jLabel1.setText("Login Page");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 13, 189, 47));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(203, 210, 233));
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(11, 44, 83));
         jLabel2.setText("Username");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 78, -1, -1));
 
-        et_username.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        et_username.setToolTipText("");
-        getContentPane().add(et_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 125, 241, 40));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(203, 210, 233));
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(11, 44, 83));
         jLabel6.setText("Password");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 193, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel3.setBackground(new java.awt.Color(230, 223, 219));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setForeground(new java.awt.Color(154, 165, 177));
+        jLabel4.setForeground(new java.awt.Color(11, 44, 83));
         jLabel4.setText("Don't have an Account?");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
-        incorrectpasstext.setForeground(new java.awt.Color(198, 40, 40));
+        incorrectpasstext.setForeground(new java.awt.Color(255, 0, 0));
         incorrectpasstext.setText("Password Incorrect");
         jPanel3.add(incorrectpasstext, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_login.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_login-removebg-preview.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 250, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setForeground(new java.awt.Color(228, 231, 235));
+        jLabel5.setForeground(new java.awt.Color(3, 11, 21));
         jLabel5.setText("click here");
         jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -132,10 +122,11 @@ public class LoginScreen extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 60, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 60, 20));
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setBackground(new java.awt.Color(28, 109, 208));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 248, 243));
         jButton1.setText("Login");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,8 +141,8 @@ public class LoginScreen extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 190, 40));
         jPanel3.add(et_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 240, 40));
 
-        btn_error.setBackground(new java.awt.Color(34, 34, 34));
-        btn_error.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nihal gupta\\Downloads\\error.png")); // NOI18N
+        btn_error.setBackground(new java.awt.Color(255, 248, 243));
+        btn_error.setForeground(new java.awt.Color(255, 0, 0));
         btn_error.setBorderPainted(false);
         btn_error.setContentAreaFilled(false);
         btn_error.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -169,6 +160,16 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btn_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 30, 30));
+
+        jLabel1.setBackground(new java.awt.Color(203, 210, 217));
+        jLabel1.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(11, 44, 83));
+        jLabel1.setText("LOGIN PAGE");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 240, 47));
+
+        et_username.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        et_username.setToolTipText("");
+        jPanel3.add(et_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 241, 40));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 390));
 

@@ -41,8 +41,8 @@ public class FeedbackScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jlable1 = new javax.swing.JLabel();
         btn_submit = new javax.swing.JButton();
+        jlable1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jlabel2 = new javax.swing.JLabel();
         et_title = new javax.swing.JTextField();
@@ -53,20 +53,11 @@ public class FeedbackScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlable1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jlable1.setText("Feedback");
-        jlable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlable1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jlable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
-
-        btn_submit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_submit.setBackground(new java.awt.Color(28, 109, 208));
+        btn_submit.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_submit.setForeground(new java.awt.Color(255, 248, 243));
         btn_submit.setText("Submit");
         btn_submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_submit.addActionListener(new java.awt.event.ActionListener() {
@@ -74,13 +65,25 @@ public class FeedbackScreen extends javax.swing.JFrame {
                 btn_submitActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        jPanel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_feedback.png"))); // NOI18N
+        jlable1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jlable1.setForeground(new java.awt.Color(11, 44, 83));
+        jlable1.setText("Feedback");
+        jlable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlable1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jlable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img_feedback-removebg-preview.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 400, -1));
 
-        jlabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jlabel2.setForeground(new java.awt.Color(11, 44, 83));
         jlabel2.setText("Title");
         jlabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,7 +91,7 @@ public class FeedbackScreen extends javax.swing.JFrame {
                 jlabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jlabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+        jPanel1.add(jlabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
 
         et_title.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         et_title.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +108,8 @@ public class FeedbackScreen extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 340, 140));
 
+        btn_back.setBackground(new java.awt.Color(73, 138, 217));
+        btn_back.setForeground(new java.awt.Color(255, 248, 243));
         btn_back.setText("⬅");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

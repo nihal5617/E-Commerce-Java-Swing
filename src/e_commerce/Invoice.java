@@ -87,31 +87,37 @@ public class Invoice extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(11, 44, 83));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(11, 44, 83));
         jLabel1.setText("PRODUCT NAME");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 220, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(11, 44, 83));
         jLabel2.setText("PRICE");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 130, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(11, 44, 83));
         jLabel3.setText("TOTAL");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 130, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(11, 44, 83));
         jLabel4.setText("MANUFACTURER");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 220, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(11, 44, 83));
         jLabel5.setText("QUANTITY");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 160, -1));
 
+        btn_placeorder.setBackground(new java.awt.Color(28, 109, 208));
         btn_placeorder.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_placeorder.setForeground(new java.awt.Color(255, 248, 243));
         btn_placeorder.setText("PLACE ORDER");
         btn_placeorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,25 +127,31 @@ public class Invoice extends javax.swing.JFrame {
         jPanel1.add(btn_placeorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
 
         pname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pname.setForeground(new java.awt.Color(11, 44, 83));
         pname.setText("......");
         jPanel1.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 170, 20));
 
         mname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mname.setForeground(new java.awt.Color(11, 44, 83));
         mname.setText("jLabel7");
         jPanel1.add(mname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 100, 20));
 
         price.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        price.setForeground(new java.awt.Color(11, 44, 83));
         price.setText("jLabel8");
         jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 120, -1));
 
         quantity.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        quantity.setForeground(new java.awt.Color(11, 44, 83));
         quantity.setText("jLabel9");
         jPanel1.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 120, -1));
 
         total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        total.setForeground(new java.awt.Color(11, 44, 83));
         total.setText("jLabel10");
         jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 120, -1));
 
+        BackButton.setBackground(new java.awt.Color(73, 138, 217));
         BackButton.setText("⬅");
         BackButton.setAlignmentX(-0.5F);
         BackButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

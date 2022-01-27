@@ -99,13 +99,13 @@ public class BuyScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Image_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/electronics_large.jpg"))); // NOI18N
         Image_file.setText("IMAGE");
         jPanel1.add(Image_file, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 500, 330));
 
+        BackButton.setBackground(new java.awt.Color(73, 138, 217));
         BackButton.setText("⬅");
         BackButton.setAlignmentX(-0.5F);
         BackButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -118,56 +118,65 @@ public class BuyScreen extends javax.swing.JFrame {
         jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 20));
 
         productinfo.setEditable(false);
+        productinfo.setBackground(new java.awt.Color(240, 240, 240));
         productinfo.setColumns(20);
+        productinfo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         productinfo.setLineWrap(true);
         productinfo.setRows(5);
         productinfo.setText("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
         jScrollPane1.setViewportView(productinfo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 470, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 500, 140));
 
-        product_name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        product_name.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        product_name.setForeground(new java.awt.Color(11, 44, 83));
         product_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         product_name.setText("PRODUCT");
-        jPanel1.add(product_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 230, 30));
+        jPanel1.add(product_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 230, 30));
 
         pricelabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pricelabel.setForeground(new java.awt.Color(11, 44, 83));
         pricelabel.setText("PRICE");
-        jPanel1.add(pricelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 80, 30));
+        jPanel1.add(pricelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 80, 30));
 
+        Buybutton.setBackground(new java.awt.Color(28, 109, 208));
         Buybutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Buybutton.setForeground(new java.awt.Color(255, 248, 243));
         Buybutton.setText("BUY");
         Buybutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuybuttonActionPerformed(evt);
             }
         });
-        jPanel1.add(Buybutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, 80, 40));
+        jPanel1.add(Buybutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 320, 80, 40));
 
         quantitylabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        quantitylabel.setForeground(new java.awt.Color(11, 44, 83));
         quantitylabel.setText("IN STOCK");
-        jPanel1.add(quantitylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 90, 30));
+        jPanel1.add(quantitylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 90, 30));
 
         jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 70, 30));
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 70, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(11, 44, 83));
         jLabel5.setText("QUANTITY");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 90, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 90, 30));
 
         rating.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rating.setText("✰");
-        jPanel1.add(rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 190, 30));
+        jPanel1.add(rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 190, 30));
 
         Quantity.setEditable(false);
+        Quantity.setBackground(new java.awt.Color(255, 255, 255));
         Quantity.setText("jTextField1");
         Quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 QuantityActionPerformed(evt);
             }
         });
-        jPanel1.add(Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, -1, 30));
+        jPanel1.add(Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, -1, 30));
 
         price1.setText("jTextField1");
         price1.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +184,7 @@ public class BuyScreen extends javax.swing.JFrame {
                 price1ActionPerformed(evt);
             }
         });
-        jPanel1.add(price1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 70, 30));
+        jPanel1.add(price1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 70, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 600));
 
