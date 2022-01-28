@@ -159,6 +159,7 @@ public class FeedbackScreen extends javax.swing.JFrame {
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         // TODO add your handling code here:
         MainScreen main = new MainScreen();
+        main.getCusername(cusername);
         main.setVisible(true);
         main.setLocationRelativeTo(null);
         this.dispose();
