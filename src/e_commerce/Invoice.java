@@ -221,6 +221,7 @@ public class Invoice extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, "Your Order is Placed!!", "Thank You!!", JOptionPane.INFORMATION_MESSAGE);
         MainScreen main = new MainScreen();
+        main.getCusername(gotusername);
         main.setVisible(true);
         main.setLocationRelativeTo(null);
         this.dispose();
