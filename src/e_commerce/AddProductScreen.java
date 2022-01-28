@@ -197,7 +197,8 @@ public class AddProductScreen extends javax.swing.JFrame {
             et_pname.setText("");
             et_price.setText("");
             info.setText("");
-            spinner.setValue(0);
+            spinner.setModel(new javax.swing.SpinnerNumberModel(2, 1, 100, 1));
+            spinner.setValue(1);
             cb_category.setSelectedIndex(1);
         }
 
