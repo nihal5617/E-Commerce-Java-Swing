@@ -209,6 +209,7 @@ public class BuyScreen extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         MainScreen main = new MainScreen();
+        main.getCusername(gotusername);
         main.setVisible(true);
         main.setLocationRelativeTo(null);
         this.dispose();
