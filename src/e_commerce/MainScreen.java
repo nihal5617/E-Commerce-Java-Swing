@@ -316,10 +316,11 @@ public class MainScreen extends javax.swing.JFrame {
         header.setDefaultRenderer(centerRenderer);
         jTable1.setDefaultRenderer(String.class, centerRenderer);
         jTable1.setDefaultRenderer(Integer.class, centerRenderer);
+        jTable1.setModel(model);
         jTable1.getColumnModel().getColumn(4).setMinWidth(0);
         jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(4).setWidth(0);
-        jTable1.setModel(model);
+
     }//GEN-LAST:event_btn_applyMouseClicked
 
     private void et_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_et_searchKeyReleased
@@ -371,10 +372,11 @@ public class MainScreen extends javax.swing.JFrame {
         header.setDefaultRenderer(centerRenderer);
         jTable1.setDefaultRenderer(String.class, centerRenderer);
         jTable1.setDefaultRenderer(Integer.class, centerRenderer);
+        jTable1.setModel(model);
         jTable1.getColumnModel().getColumn(4).setMinWidth(0);
         jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
         jTable1.getColumnModel().getColumn(4).setWidth(0);
-        jTable1.setModel(model);
+        
     }//GEN-LAST:event_et_searchKeyReleased
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
