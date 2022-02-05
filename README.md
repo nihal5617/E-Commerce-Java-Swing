@@ -6,5 +6,8 @@ Create an E-Commerce Application using NetBeans for Frontend and MySQL for Backe
 ## Flow Of Application
 <img src="https://user-images.githubusercontent.com/80695826/152651573-f7cd0d3d-e7f8-40ad-8172-e8ed6b03f7af.png" width=50% height=50%>
 
+## ER Diagram
+<img src="https://user-images.githubusercontent.com/80695826/152652219-d5686f49-d99f-4ec0-b7f2-36bbe42033e2.png" width=50% height=50%>
+
 ## For Database
 Use the Dump file to see all the required commands to create tables.
