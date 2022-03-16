@@ -10,4 +10,4 @@ Create an E-Commerce Application using NetBeans for Frontend and MySQL for Backe
 <img src="https://user-images.githubusercontent.com/80695826/152652219-d5686f49-d99f-4ec0-b7f2-36bbe42033e2.png" width=50% height=50%>
 
 ## For Database
-Use the Dump file to see all the required commands to create tables.
+<a href="https://github.com/nihal5617/E-Commerce-Java-Swing/tree/main/Dump20220128">Click here</a> to see all the required commands to create tables.
